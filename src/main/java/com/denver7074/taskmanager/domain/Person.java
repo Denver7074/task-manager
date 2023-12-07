@@ -1,5 +1,6 @@
 package com.denver7074.taskmanager.domain;
 
+import com.denver7074.taskmanager.domain.common.DateEntity;
 import com.denver7074.taskmanager.domain.common.IdentityEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
@@ -19,7 +20,7 @@ import java.time.LocalDate;
 @Accessors(chain = true)
 @EqualsAndHashCode(callSuper = true)
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Person extends IdentityEntity {
+public class Person extends DateEntity {
 
     @NotBlank
     @Schema(description = "e-mail почта")
@@ -34,7 +35,7 @@ public class Person extends IdentityEntity {
     String secondName;
     @NotBlank
     @Schema(description = "Пароль")
-    Character password;
+    String password;
     @NotBlank
     @Schema(description = "Дата рождения")
     LocalDate dateBirth;

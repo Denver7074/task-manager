@@ -1,31 +1,31 @@
-INSERT INTO task_status (id, name, code, created_date, last_modified_date)
-VALUES (1, 'Новая', 'new', current_timestamp, current_timestamp)
+INSERT INTO task_status (id, name, code)
+VALUES (1, 'Новая', 'new')
     ON CONFLICT DO NOTHING;
 
-INSERT INTO task_status (id, name, code, created_date, last_modified_date)
-VALUES (2, 'В работе', 'work', current_timestamp, current_timestamp)
+INSERT INTO task_status (id, name, code)
+VALUES (2, 'В работе', 'work')
     ON CONFLICT DO NOTHING;
 
-INSERT INTO task_status (id, name, code, created_date, last_modified_date)
-VALUES (3, 'Отработана', 'finish', current_timestamp, current_timestamp)
+INSERT INTO task_status (id, name, code)
+VALUES (3, 'Отработана', 'finish')
     ON CONFLICT DO NOTHING;
 
-INSERT INTO task_priority (id, name, code, created_date, last_modified_date)
-VALUES (1, 'Высокий', 'high', current_timestamp, current_timestamp)
+INSERT INTO task_priority (id, name, code)
+VALUES (1, 'Высокий', 'high')
 ON CONFLICT DO NOTHING;
 
-INSERT INTO task_priority (id, name, code, created_date, last_modified_date)
-VALUES (2, 'Средний', 'medium', current_timestamp, current_timestamp)
+INSERT INTO task_priority (id, name, code)
+VALUES (2, 'Средний', 'medium')
 ON CONFLICT DO NOTHING;
 
-INSERT INTO task_priority (id, name, code, created_date, last_modified_date)
-VALUES (3, 'Низкий', 'low', current_timestamp, current_timestamp)
+INSERT INTO task_priority (id, name, code)
+VALUES (3, 'Низкий', 'low')
 ON CONFLICT DO NOTHING;
 
-INSERT INTO role (id, name, code, created_date, last_modified_date)
-VALUES (1, 'Автор', 'author', current_timestamp, current_timestamp)
+INSERT INTO role (id, name, code)
+VALUES (1, 'Автор', 'author')
 ON CONFLICT DO NOTHING;
 
-INSERT INTO role (id, name, code, created_date, last_modified_date)
-VALUES (2, 'Исполнитель', 'executor', current_timestamp, current_timestamp)
+INSERT INTO role (id, name, code)
+VALUES (2, 'Исполнитель', 'executor')
 ON CONFLICT DO NOTHING;

@@ -2,27 +2,21 @@ create table if not exists task_status
 (
     id                 bigserial primary key,
     name               varchar(20) not null,
-    code               varchar(20) not null,
-    created_date       timestamp,
-    last_modified_date timestamp
+    code               varchar(20) not null
 );
 
 create table if not exists task_priority
 (
     id                 bigserial primary key,
     name               varchar(20) not null,
-    code               varchar(20) not null,
-    created_date       timestamp,
-    last_modified_date timestamp
+    code               varchar(20) not null
 );
 
 create table if not exists role
 (
     id                 bigserial primary key,
     name               varchar(20) not null,
-    code               varchar(20) not null,
-    created_date       timestamp,
-    last_modified_date timestamp
+    code               varchar(20) not null
 );
 
 
@@ -57,7 +51,7 @@ create table if not exists task
     description        varchar(500),
     status_id          bigserial not null references task_status,
     priority_id        bigserial not null references task_priority,
-    date_execution     timestamp,
+    date_execution     date,
 --     task_user_id       bigint,
     created_date       timestamp,
     last_modified_date timestamp

@@ -1,9 +1,11 @@
 package com.denver7074.taskmanager.domain;
 
-import com.denver7074.taskmanager.domain.common.IdentityEntity;
-
+import com.denver7074.taskmanager.domain.common.DateEntity;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -19,12 +21,13 @@ import java.time.LocalDate;
 @Accessors(chain = true)
 @EqualsAndHashCode(callSuper = true)
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Task extends IdentityEntity {
+public class Task extends DateEntity {
 
     @Schema(description = "Заголовок задачи")
     String header;
     @Schema(description = "Описание задачи")
     String description;
+    @JsonFormat(pattern = "dd.MM.yyyy")
     @Schema(description = "Срок выполнения")
     LocalDate dateExecution;
     @ManyToOne

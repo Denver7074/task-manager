@@ -15,19 +15,12 @@ import java.time.LocalDateTime;
 @Data
 @MappedSuperclass
 @FieldNameConstants
-@EntityListeners(AuditingEntityListener.class)
 public abstract class IdentityEntity implements ReachableDTO {
 
     @Id
     @Schema(description = "Id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    @Schema(description = "Дата создания", hidden = true)
-    @CreatedDate
-    LocalDateTime createdDate;
-    @Schema(description = "Дата последнего обновления", hidden = true)
-    @LastModifiedDate
-    LocalDateTime lastModifiedDate;
 
     @Override
     public IdentityEntity reach(CrudService crudService) {
