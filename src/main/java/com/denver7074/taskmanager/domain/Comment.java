@@ -2,7 +2,6 @@ package com.denver7074.taskmanager.domain;
 
 import com.denver7074.taskmanager.domain.common.IdentityEntity;
 import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -15,6 +14,5 @@ import lombok.experimental.FieldDefaults;
 public class Comment extends IdentityEntity {
 
     String value;
-    @ManyToOne
-    TaskUser taskUser;
+
 }

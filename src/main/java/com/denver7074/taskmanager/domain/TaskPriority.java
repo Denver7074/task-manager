@@ -14,9 +14,9 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class TaskPriority extends IdentityEntity {
 
-    @Schema(description = "Название приоритета", hidden = true)
+    @Schema(description = "Название приоритета")
     String name;
-    @Schema(description = "Код приоритета", hidden = true)
+    @Schema(description = "Код приоритета")
     String code;
 
 }

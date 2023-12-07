@@ -26,9 +26,8 @@ public class CrudService {
     private final EntityManager entityManager;
 
 
-    public <E extends IdentityEntity, D extends ReachableDTO> E create(D dto) {
-        IdentityEntity reach = dto.reach(this);
-        IdentityEntity merge = entityManager.merge(reach);
+    public <E extends IdentityEntity> E create(E entity) {
+        IdentityEntity merge = entityManager.merge(entity);
         return CastUtils.cast(merge);
     }
 

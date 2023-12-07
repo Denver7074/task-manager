@@ -14,9 +14,9 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class TaskStatus extends IdentityEntity {
 
-    @Schema(description = "Название статуса", hidden = true)
+    @Schema(description = "Название статуса")
     String name;
-    @Schema(description = "Код статуса", hidden = true)
+    @Schema(description = "Код статуса")
     String code;
 
 }
