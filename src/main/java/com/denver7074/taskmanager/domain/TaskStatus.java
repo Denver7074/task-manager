@@ -16,7 +16,7 @@ public class TaskStatus extends IdentityEntity {
 
     @Schema(description = "Название статуса")
     String name;
-    @Schema(description = "Код статуса")
+    @Schema(description = "Код статуса", hidden = true)
     String code;
 
 }

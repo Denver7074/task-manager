@@ -2,11 +2,14 @@ package com.denver7074.taskmanager.utils;
 
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import static com.denver7074.taskmanager.utils.Constants.LIST_FORMAT_DATE;
+import static com.google.common.base.CaseFormat.LOWER_CAMEL;
+import static com.google.common.base.CaseFormat.LOWER_UNDERSCORE;
 import static java.util.Objects.isNull;
 import static org.apache.commons.lang3.ObjectUtils.isNotEmpty;
 
@@ -35,6 +38,11 @@ public class Utils {
             if (isNotEmpty(parse)) break;
         }
         return parse;
+    }
+
+    public static String camel2underscore(String text) {
+        return isNull(text) ? null : LOWER_CAMEL
+                .to(LOWER_UNDERSCORE, StringUtils.removeStart(text, "_"));
     }
 
 }

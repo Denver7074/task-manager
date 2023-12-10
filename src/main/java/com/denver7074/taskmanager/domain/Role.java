@@ -1,22 +1,18 @@
 package com.denver7074.taskmanager.domain;
 
-import com.denver7074.taskmanager.domain.common.IdentityEntity;
-import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.Entity;
 import lombok.AccessLevel;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
-@Data
-@Entity
-@EqualsAndHashCode(callSuper = true)
-@FieldDefaults(level = AccessLevel.PRIVATE)
-public class Role extends IdentityEntity {
+@Getter
+@RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
+public enum Role {
 
-    @Schema(description = "Название роли")
-    String name;
-    @Schema(description = "Код роли")
-    String code;
+    AUTHOR("автор"),
+    EXECUTOR("исполнитель");
+
+    String value;
 
 }

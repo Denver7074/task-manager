@@ -1,7 +1,10 @@
 package com.denver7074.taskmanager.domain;
 
 import com.denver7074.taskmanager.domain.common.DateEntity;
-import com.denver7074.taskmanager.domain.common.IdentityEntity;
+import com.denver7074.taskmanager.service.CrudService;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
@@ -15,8 +18,12 @@ import lombok.experimental.FieldDefaults;
 import lombok.experimental.FieldNameConstants;
 
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.denver7074.taskmanager.utils.Constants.pattern;
+import static com.denver7074.taskmanager.utils.Errors.E004;
+import static org.apache.commons.lang3.BooleanUtils.isFalse;
 
 @Data
 @Entity
@@ -38,16 +45,27 @@ public class Person extends DateEntity {
     @Schema(description = "Отчество")
     String secondName;
     @NotBlank
+    @JsonIgnore
     @Schema(description = "Пароль")
     String password;
     @NotNull
     @Schema(description = "Дата рождения")
     LocalDate dateBirth;
     @OneToMany(mappedBy = "author")
-    @Schema(description = "Спиок моих задач")
-    Set<Task> myTask = new HashSet<>();
-    @OneToMany(mappedBy = "executor")
-    @Schema(description = "Список задач на выполнение")
-    Set<Task> perform = new HashSet<>();
+    List<Task> taskList = new ArrayList<>();
 
+    @Override
+    public void validate(CrudService crudService) {
+        E004.thr(isFalse(pattern.matcher(getEmail()).matches()));
+    }
+
+//    @Override
+//    public void reachTransient(CrudService crudService) {
+//        List<Task> tasks = crudService
+//                .find(Task.class,
+//                        Collections.singletonMap(Task.Fields.author, getId()),
+//                        Pageable.unpaged())
+//                .getContent();
+//        this.setTaskList(tasks);
+//    }
 }

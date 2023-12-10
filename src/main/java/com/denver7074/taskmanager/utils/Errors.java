@@ -16,7 +16,9 @@ import static org.apache.commons.lang3.ObjectUtils.anyNotNull;
 public enum Errors {
 
     E001("Сущность %s с id %s не найдена"),
-    E002("В базе данных пока ничего нет");
+    E002("Отсутствуют обязательные параметры: %s"),
+    E003("Пользователь с такой электронной почтой уже существует"),
+    E004("Некорректно введен E-mail");
 
     String description;
 

@@ -3,10 +3,14 @@ package com.denver7074.taskmanager.api.response;
 import com.denver7074.taskmanager.utils.Errors;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.HandlerMethodValidationException;
+
+import java.util.Objects;
 
 import static com.denver7074.taskmanager.utils.Errors.E001;
 
@@ -27,4 +31,16 @@ public class ControllerAdvice {
         return ResponseApi.negativeResponse(t.getError().name(), t.getMessage(),
                 ExceptionUtils.getStackTrace(t));
     }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public Object handleException(MethodArgumentNotValidException t) {
+        FieldError error = t.getBindingResult().getFieldError();
+        return ResponseApi.negativeResponse(Errors.E002.name(),
+                String.format(Errors.E002.getDescription(),
+                        Objects.requireNonNull(error).getField()),
+                ExceptionUtils.getStackTrace(t)
+        );
+    }
+
 }
